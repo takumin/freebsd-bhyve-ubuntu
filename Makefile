@@ -45,28 +45,11 @@ ${WORKDIR}/install-15.04.map: ${WORKDIR}/install-template.map
 install-grub: install-devmap ${WORKDIR}/install-12.04.grub ${WORKDIR}/install-14.04.grub ${WORKDIR}/install-15.04.grub
 ${WORKDIR}/install-template.grub:
 	@echo -n "linux (cd0)/linux" >> $@
-	@echo -n " auto-install/enable=true" >> $@
-	@echo -n " debconf/priority=critical" >> $@
-	@echo -n " debian-installer/language=ja" >> $@
-	@echo -n " debian-installer/country=JP" >> $@
-	@echo -n " debian-installer/locale=ja_JP.UTF-8" >> $@
-	@echo -n " localechooser/supported-locales=ja_JP.UTF-8,en_US.UTF-8" >> $@
-	@echo -n " localechooser/translation/warn-severe=true" >> $@
-	@echo -n " localechooser/translation/warn-light=true" >> $@
-	@echo -n " console-setup/ask_detect=false" >> $@
-	@echo -n " console-setup/layoutcode=jp" >> $@
-	@echo -n " console-setup/charmap=UTF-8" >> $@
-	@echo -n " keyboard-configuration/modelcode=jp106" >> $@
-	@echo -n " keyboard-configuration/layoutcode=jp" >> $@
-	@echo -n " keyboard-configuration/xkb-keymap=jp" >> $@
-	@echo -n " netcfg/choose_interface=auto" >> $@
-	@echo -n " netcfg/get_hostname=unassigned-hostname" >> $@
-	@echo -n " netcfg/get_domain=unassigned-domain" >> $@
-	@echo -n " netcfg/wireless_wep=" >> $@
+	@echo -n " auto" >> $@
+	@echo -n " locale=en_US" >> $@
+	@echo -n " hostname=ubuntu" >> $@
 	@echo -n " preseed/url=${UBUNTU_PRESEED_URL}?@@SUITE@@" >> $@
-	@echo -n " quiet splash" >> $@
-	@echo -n " --" >> $@
-	@echo "quiet splash" >> $@
+	@echo "-- quiet splash" >> $@
 	@echo "initrd (cd0)/initrd.gz" >> $@
 	@echo "boot" >> $@
 ${WORKDIR}/install-12.04.grub: ${WORKDIR}/install-template.grub
