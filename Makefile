@@ -2,7 +2,7 @@ WORKDIR?=	${.CURDIR}/.temp
 DOWNDIR?=	${.CURDIR}/.down
 
 ARCH?=		amd64
-VERSION?=	15.04
+VERSION?=	14.04
 DISK?=		/dev/zvol/zroot/bhyve/ubuntu
 
 UBUNTU_MIRROR_BASE?=	http://www.ftp.ne.jp/Linux/packages/ubuntu/archive/
@@ -70,7 +70,7 @@ install-boot: install-grub
 		-s 0:0,hostbridge \
 		-s 1:0,lpc \
 		-s 2:0,virtio-net,tap0 \
-		-s 3,ahci-cd,${DOWNDIR}/ubuntu-server-${VERSION}.iso \
+		-s 3,ahci-cd,${DOWNDIR}/ubuntu-minimal-${VERSION}.iso \
 		-s 4,virtio-blk,${DISK} ubuntu-${VERSION}
 
 .PHONY: clean
