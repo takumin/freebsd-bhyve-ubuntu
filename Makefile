@@ -44,7 +44,7 @@ ${WORKDIR}/install-15.04.map: ${WORKDIR}/install-template.map
 .PHONY: install-grub
 install-grub: install-devmap ${WORKDIR}/install-12.04.grub ${WORKDIR}/install-14.04.grub ${WORKDIR}/install-15.04.grub
 ${WORKDIR}/install-template.grub:
-	@echo -n "linux (cd0)/install/vmlinuz" >> $@
+	@echo -n "linux (cd0)/linux" >> $@
 	@echo -n " auto-install/enable=true" >> $@
 	@echo -n " debconf/priority=critical" >> $@
 	@echo -n " debian-installer/language=ja" >> $@
@@ -67,7 +67,7 @@ ${WORKDIR}/install-template.grub:
 	@echo -n " quiet splash" >> $@
 	@echo -n " --" >> $@
 	@echo "quiet splash" >> $@
-	@echo "initrd (cd0)/install/initrd.gz" >> $@
+	@echo "initrd (cd0)/initrd.gz" >> $@
 	@echo "boot" >> $@
 ${WORKDIR}/install-12.04.grub: ${WORKDIR}/install-template.grub
 	@sed -e 's/@@SUITE@@/suite=precise/' ${WORKDIR}/install-template.grub > $@
